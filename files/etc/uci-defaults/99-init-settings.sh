@@ -226,12 +226,13 @@ fi
 log_status "INFO" "Setting up misc settings and sett permission"
 # setup misc settings
 sed -i -e 's/\[ -f \/etc\/banner \] && cat \/etc\/banner/#&/' -e 's/\[ -n \"\$FAILSAFE\" \] && cat \/etc\/banner.failsafe/& || \/usr\/bin\/xyyraa/' /etc/profile 2>/dev/null
+sed -i 's|;DatabaseDir "/var/lib/vnstat"|DatabaseDir "/etc/vnstat"|' /etc/vnstat.conf
 chmod -R +x /sbin /usr/bin 2>/dev/null
 chmod -R +x /etc/init.d 2>/dev/null
-chmod 600 /etc/vnstat.conf 2>/dev/null
-chmod +x /etc/hotplug.d/usb/21-modem_detect 2>/dev/null
+
+
 chmod +x /usr/lib/ModemManager/connection.d/10-report-down 2>/dev/null
-chmod +x /www/cgi-bin/reset-vnstat.sh /www/vnstati/vnstati.sh 2>/dev/null
+
 
 log_status "INFO" "Adding and running install2 script..."
 if [ -f "/root/install2.sh" ]; then
@@ -429,8 +430,5 @@ log_status "INFO" "XIDZs-WRT Setup Script Finished"
 log_status "INFO" "Check log file: $LOG_FILE"
 log_status "INFO" "========================================="
 
-sync
-sleep 8
-reboot
 
 exit 0
