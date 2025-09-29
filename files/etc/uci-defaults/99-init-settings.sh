@@ -207,7 +207,6 @@ log_status "SUCCESS" "TinyFM rootfs symlink created"
 log_status "INFO" "Add Auto Sinkron Jam, Clean Cache, Remove mm tty..."
 sed -i '/exit 0/i #/sbin/free.sh' /etc/rc.local 2>/dev/null
 sed -i '/exit 0/i #sh /sbin/jam bug.com' /etc/rc.local 2>/dev/null
-
 log_status "SUCCESS" "Auto sync, cache settings, remove mm tty applied"
 
 # setup device amlogic
@@ -229,10 +228,7 @@ sed -i -e 's/\[ -f \/etc\/banner \] && cat \/etc\/banner/#&/' -e 's/\[ -n \"\$FA
 sed -i 's|;DatabaseDir "/var/lib/vnstat"|DatabaseDir "/etc/vnstat"|' /etc/vnstat.conf
 chmod -R +x /sbin /usr/bin 2>/dev/null
 chmod -R +x /etc/init.d 2>/dev/null
-
-
 chmod +x /usr/lib/ModemManager/connection.d/10-report-down 2>/dev/null
-
 
 log_status "INFO" "Adding and running install2 script..."
 if [ -f "/root/install2.sh" ]; then
@@ -429,6 +425,5 @@ log_status "INFO" "========================================="
 log_status "INFO" "XIDZs-WRT Setup Script Finished"
 log_status "INFO" "Check log file: $LOG_FILE"
 log_status "INFO" "========================================="
-
 
 exit 0
