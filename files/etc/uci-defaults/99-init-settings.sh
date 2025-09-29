@@ -206,8 +206,8 @@ log_status "SUCCESS" "TinyFM rootfs symlink created"
 # add auto sinkron jam, Clean Cache, Remove mm tty
 log_status "INFO" "Add Auto Sinkron Jam, Clean Cache, Remove mm tty..."
 sed -i '/exit 0/i #/sbin/free.sh' /etc/rc.local 2>/dev/null
-sed -i '/exit 0/i #sh /usr/bin/autojam.sh bug.com' /etc/rc.local 2>/dev/null
-rm -f /etc/hotplug.d/tty/25-modemmanager-tty 2>/dev/null
+sed -i '/exit 0/i #sh /sbin/jam bug.com' /etc/rc.local 2>/dev/null
+
 log_status "SUCCESS" "Auto sync, cache settings, remove mm tty applied"
 
 # setup device amlogic
