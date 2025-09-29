@@ -92,7 +92,7 @@ verify_packages() {
     log "INFO" "Found $total_found package files"
     
     for package in "${pckage_list[@]}"; do
-        local pkg_name="${package%%|*}"
+        for package in "${pckage_list[@]}"; do
         if ! find "$pkg_dir" \( -name "${pkg_name}*.ipk" -o -name "${pkg_name}*.apk" \) -print -quit | grep -q .; then
             failed_packages+=("$pkg_name")
         fi
