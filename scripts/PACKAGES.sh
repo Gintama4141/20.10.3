@@ -65,6 +65,7 @@ packages_custom+=(
     "luci-app-tinyfm_|https://api.github.com/repos/bobbyunknown/luci-app-tinyfm/releases/latest"
     "luci-app-droidnet_|https://api.github.com/repos/animegasan/luci-app-droidmodem/releases/latest"
     "luci-theme-alpha4_|https://github.com/derisamedia/luci-theme-alpha/releases/download/alpha-4.0.1-beta2/luci-theme-alpha4_4.0.1-beta2_all.ipk"
+
     "luci-app-tailscale_|https://api.github.com/repos/asvow/luci-app-tailscale/releases/latest"
     #"luci-app-rakitanmanager_|https://api.github.com/repos/rtaserver/RakitanManager/releases/latest"
     "luci-app-ipinfo_|https://api.github.com/repos/bobbyunknown/luci-app-ipinfo/releases/latest"
@@ -92,7 +93,7 @@ verify_packages() {
     log "INFO" "Found $total_found package files"
     
     for package in "${pckage_list[@]}"; do
-        for package in "${pckage_list[@]}"; do
+        local pkg_name="${package%%|*}"
         if ! find "$pkg_dir" \( -name "${pkg_name}*.ipk" -o -name "${pkg_name}*.apk" \) -print -quit | grep -q .; then
             failed_packages+=("$pkg_name")
         fi
